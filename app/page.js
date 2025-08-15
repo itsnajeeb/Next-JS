@@ -2,8 +2,7 @@ function Home() {
 
   return (
     <>
-      <h2>Page layout</h2>
-      <h1>Welcome to Next JS</h1>
+      <h1 className="text-6xl text-center mt-40">Welcome to Next JS</h1>
     </>
   )
 }
