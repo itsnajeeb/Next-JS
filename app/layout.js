@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
   return (
     <html leng="en">
       <body className={` ${geistMono.variable}`}>
-        <p>Pages</p>
         {children}
       </body>
     </html>
