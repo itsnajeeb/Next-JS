@@ -1,5 +1,12 @@
 import style from './service.module.css'
+export const metadata = {
+    title: "Service Page",
+    description: "This is Description from contact page",
+    authors: [{ name: "Najeeb", name: "Kamil", name: "Zeeshan" }],
+    keywords: ["nextjs", "e-learning", "project", "paytm"]
+}
 const page = () => {
+
     return (
         <div>
             <h1 className='font-work-sans'>Service Page !</h1>

@@ -1,5 +1,11 @@
 import React from 'react'
 import style from './style.module.css'
+export const metadata = {
+    title: "About Page",
+    description: "This is Description from About page",
+    authors: [{ name: "Najeeb", name: "Kamil", name: "Zeeshan" }],
+    keywords: ["nextjs", "e-learning", "project", "paytm"]
+}
 const about = () => {
     return (
         <div>
