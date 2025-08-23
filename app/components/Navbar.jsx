@@ -9,11 +9,11 @@ const Navbar = () => {
             </div>
             <ul className='flex flex-row space-x-10'>
                 <li><Link href="/">Home</Link></li>
-                <li><Link href="/user/about">About</Link></li>
-                <li><Link href="/user/service">Service</Link></li>
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="/service">Service</Link></li>
                 <li><Link href="/ImageCard/">Card</Link></li>
-                <li><Link href="/user/clientComp/">ClientComp</Link></li>
-                <li><Link href="/user/serverComp/">ServerComp</Link></li>
+                <li><Link href="/clientComp">ClientComp</Link></li>
+                <li><Link href="/serverComp">ServerComp</Link></li>
             </ul>
         </div>
     )

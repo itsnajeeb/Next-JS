@@ -1,8 +1,11 @@
 
-import React from 'react'
+"use client"
+import React, { use } from 'react'
 
-const singleProfilePost = async (props) => {
-    let user = await props.params
+const singleProfilePost =  (props) => {
+    let user =  use(props.params);
+    console.log(user);
+    
 
     return (
         <div>
