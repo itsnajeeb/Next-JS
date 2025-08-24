@@ -2,7 +2,8 @@ import React from 'react'
 
 const Product = async ({ searchParams }) => {
     let searchValue = await searchParams;
-    console.log(searchValue);
+    console.log("Server > ",searchValue);
+    
     console.log(Object.entries(searchValue));
     
 
