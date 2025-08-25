@@ -9,7 +9,7 @@ const DataFetcher = () => {
     alert("Clicked")
 
     if (!inputValue) return   // don’t call API on empty input
-
+    
     const fetchData = async () => {
       try {
         const res = await fetch(`https://api.genderize.io/?name=${inputValue}`)
