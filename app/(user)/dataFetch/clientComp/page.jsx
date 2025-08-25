@@ -13,7 +13,6 @@ const page = () => {
         ? userInfo.gender[0].toUpperCase() + userInfo.gender.slice(1).toLowerCase()
         : ""
 
-
     if (!userName) {
         return (
             <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-lg p-6 space-y-4">
