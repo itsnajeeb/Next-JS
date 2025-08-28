@@ -1,18 +1,19 @@
+import React from 'react'
 
-const DataFetcher = async (props) => {
-    const searchParam = await props.searchParams
-    const res = await fetch(`https://api.genderize.io/?name=${searchParam.name}`)
+ const Datacard = async ({ userName }) => {
+    console.log("DataCard > ", userName);
+
+    const res = await fetch(`https://api.genderize.io/?name=${userName}`)
     const userInfo = await res.json()
     console.log(userInfo);
-    
-    if(userInfo.error){
+
+    if (userInfo.error) {
         return (
             <h1 className="text-center">API hit many time. Please try again after some time</h1>
         )
     }
     let gender = userInfo.gender ? userInfo.gender[0].toUpperCase() + userInfo.gender.slice(1).toLowerCase() : ""
     let confirmProbability = userInfo.probability * 100
-
     if (!userInfo) {
         return (
             <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-lg p-6 space-y-4">
@@ -31,9 +32,14 @@ const DataFetcher = async (props) => {
         )
     }
 
-
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve()
+        }, 3000);
+    })
+    
     return (
-        <div className={`max-w-sm mx-auto ${userInfo.gender === 'male' ? 'bg-white' : 'bg-pink-300'} rounded-2xl shadow-lg p-6 space-y-4`}>
+        <div className={`max-w-full border border-red-500 mx-auto ${userInfo.gender === 'male' ? 'bg-white' : 'bg-pink-300'} rounded-2xl shadow-lg p-6 space-y-4`}>
             {/* <!-- Profile Icon --> */}
             <div className="flex flex-col items-center space-y-2">
                 <div className="bg-blue-500 p-4 rounded-full">
@@ -77,5 +83,4 @@ const DataFetcher = async (props) => {
         </div>
     )
 }
-
-export default DataFetcher
+export default Datacard
