@@ -1,9 +1,9 @@
 import { db } from '@/config/db.js'
-
+export const revalidate = 30;
 const StaticPage = async () => {
     const [doctors] = await db.execute("SELECT * FROM doctors");
     console.log("Static Page");
-    
+
     return (
         <div className="p-10">
             <h1 className="text-2xl font-bold mb-6"> Static Doctors List</h1>
@@ -21,7 +21,7 @@ const StaticPage = async () => {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                        {doctors.map((doctor) => (
+                        {doctors ? doctors.map((doctor) => (
                             <tr key={doctor.doctor_id} className="hover:bg-gray-700">
                                 <td className="px-6 py-3">{doctor.doctor_id}</td>
                                 <td className="px-6 py-3">{doctor.name}</td>
@@ -30,7 +30,7 @@ const StaticPage = async () => {
                                 <td className="px-6 py-3">{doctor.email}</td>
                                 <td className="px-6 py-3">{doctor.phone}</td>
                             </tr>
-                        ))}
+                        )) : <tr><h2>No data Available</h2></tr>}
                     </tbody>
                 </table>
             </div>

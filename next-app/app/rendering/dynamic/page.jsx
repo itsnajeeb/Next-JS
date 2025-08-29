@@ -2,10 +2,10 @@ import { db } from '@/config/db.js'
 export const dynamic = 'force-dynamic'
 const DynamicPage = async () => {
 
+    // const [doctors] = await db.execute("SELECT * FROM doctors");
     const [doctors] = await db.execute("SELECT * FROM doctors");
-
     console.log("Dynamic Page");
-    
+
     return (
         <div className="p-10">
             <h1 className="text-2xl font-bold mb-6">Dynamic Doctors List</h1>
