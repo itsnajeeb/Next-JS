@@ -1,11 +1,14 @@
 
-const DataFetcher = async (props) => {
+export default async function DataFetcher(props) {
     const searchParam = await props.searchParams
-    const res = await fetch(`https://api.genderize.io/?name=${searchParam.name}`)
+    const name = searchParam?.name
+    if (!name) {
+        return <div>No name provided</div>
+    }
+    const res = await fetch(`https://api.genderize.io/?name=${name}`)
     const userInfo = await res.json()
-    console.log(userInfo);
-    
-    if(userInfo.error){
+
+    if (userInfo.error) {
         return (
             <h1 className="text-center">API hit many time. Please try again after some time</h1>
         )
@@ -77,5 +80,3 @@ const DataFetcher = async (props) => {
         </div>
     )
 }
-
-export default DataFetcher

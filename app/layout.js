@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono, Rubik, Work_Sans } from "next/font/google";
-import "./globals.css";
 import Navbar from "./components/Navbar";
 import ProductList from "./products/ProductList";
 

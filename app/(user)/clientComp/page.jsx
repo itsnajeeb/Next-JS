@@ -18,7 +18,7 @@ const page = () => {
         fetchData()
 
     }, [])
-    console.log(postData);
+    // console.log(postData);
 
 
     return (
