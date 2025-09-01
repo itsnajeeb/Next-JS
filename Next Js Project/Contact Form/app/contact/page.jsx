@@ -1,0 +1,61 @@
+// components/ContactForm.jsx
+import { contactAction } from './contact.action'
+import React from "react";
+
+const ContactForm = () => {
+    return (
+        <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="w-full max-w-md bg-gray-600 text-white rounded-2xl shadow-lg p-8">
+                <h2 className="text-2xl font-bold  mb-6 text-center">
+                    Get In Touch
+                </h2>
+                <form className="space-y-4" action={contactAction}>
+                    <div>
+                        <label className="block  font-medium mb-1" htmlFor="name" >
+                            Name
+                        </label>
+                        <input
+                            name="fullName"
+                            type="text"
+                            id="name"
+                            placeholder="Your Name"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                        />
+                    </div>
+                    <div>
+                        <label className="block  font-medium mb-1" htmlFor="email" >
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                        />
+                    </div>
+                    <div>
+                        <label className="block  font-medium mb-1" htmlFor="message">
+                            Message
+                        </label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            rows="4"
+                            placeholder="Your message..."
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 resize-none"
+                        ></textarea>
+                    </div>
+                    <button
+                        type="submit"
+                        className="w-full bg-[#f70672] cursor-pointer hover:bg-[#c7055d] font-semibold py-2 rounded-lg transition-colors duration-300"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+};
+
+export default ContactForm;
