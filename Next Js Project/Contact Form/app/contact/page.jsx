@@ -1,7 +1,12 @@
-// components/ContactForm.jsx
-import { contactAction } from './contact.action'
-import React from "react";
+'use client'
+// import { contactAction } from './contact.action'
 
+import React from "react";
+const contactAction = (formData) => {
+    const {fullName, email, message} = Object.fromEntries(formData.entries())
+    console.log("Full Name : ", fullName, " Email : ", email, " Message : ", message);
+    
+}
 const ContactForm = () => {
     return (
         <div className="min-h-screen flex items-center justify-center p-4">
