@@ -13,7 +13,7 @@ const ContactForm = () => {
 
     //React 19 useActionState
     const [state, formAction, isPending] = useActionState(contactAction, null);
-    console.log("State > ", state?.success);
+    // console.log("State > ", state?.success);
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4">
@@ -75,9 +75,8 @@ export default ContactForm;
 
 const Submit = () => {
     const { pending, data, method, action } = useFormStatus()
-    console.log("DATA > ", data);
-    console.log("METHOD > ", method);
-    console.log("ACTION > ", action);
+    // console.log("DATA > ", data?.get("fullName"));
+    // console.log("DATA > ", data?.get("email"));
 
     return (
         <button
