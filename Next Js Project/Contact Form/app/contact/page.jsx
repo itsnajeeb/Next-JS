@@ -1,20 +1,26 @@
 'use client'
-// import { contactAction } from './contact.action'
+import { contactAction } from './contact.action'
+import React, { useActionState } from "react";
 
-import React from "react";
-const contactAction = (formData) => {
-    const {fullName, email, message} = Object.fromEntries(formData.entries())
-    console.log("Full Name : ", fullName, " Email : ", email, " Message : ", message);
-    
-}
+//for client component
+// const contactAction = (formData) => {
+//     const { fullName, email, message } = Object.fromEntries(formData.entries())
+//     console.log("Full Name : ", fullName, " Email : ", email, " Message : ", message);
+// }
+
 const ContactForm = () => {
+   
+    //React 19 useActionState
+    const [state, formAction, isPending] = useActionState(contactAction, null);
+    console.log("State > ", state?.success);
+
     return (
         <div className="min-h-screen flex items-center justify-center p-4">
             <div className="w-full max-w-md bg-gray-600 text-white rounded-2xl shadow-lg p-8">
                 <h2 className="text-2xl font-bold  mb-6 text-center">
                     Get In Touch
                 </h2>
-                <form className="space-y-4" action={contactAction}>
+                <form className="space-y-4" action={formAction}>
                     <div>
                         <label className="block  font-medium mb-1" htmlFor="name" >
                             Name
@@ -52,14 +58,24 @@ const ContactForm = () => {
                         ></textarea>
                     </div>
                     <button
+                        disabled={isPending}
                         type="submit"
                         className="w-full bg-[#f70672] cursor-pointer hover:bg-[#c7055d] font-semibold py-2 rounded-lg transition-colors duration-300"
                     >
-                        Submit
+                        {
+                            isPending ? <span>Loading....</span> : "Submit"
+                        }
+
                     </button>
+                    {/* <p className={`text-center  rounded-lg font-semibold ${state?.success ? 'bg-green-700 text-white py-2' : 'bg-red-700 text-white py-2'}`}>{state?.message}</p> */}
+                    {
+                        state && (
+                            <p className={` py-2 text-center rounded-lg ${state.success ? 'bg-green-700' : 'bg-red-700'}`}>{state.message}</p>
+                        )
+                    }
                 </form>
             </div>
-        </div>
+        </div >
     );
 };
 
