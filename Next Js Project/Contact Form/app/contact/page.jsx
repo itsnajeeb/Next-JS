@@ -1,4 +1,5 @@
 'use client'
+import { useFormStatus } from 'react-dom';
 import { contactAction } from './contact.action'
 import React, { useActionState } from "react";
 
@@ -9,7 +10,7 @@ import React, { useActionState } from "react";
 // }
 
 const ContactForm = () => {
-   
+
     //React 19 useActionState
     const [state, formAction, isPending] = useActionState(contactAction, null);
     console.log("State > ", state?.success);
@@ -57,16 +58,7 @@ const ContactForm = () => {
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 resize-none"
                         ></textarea>
                     </div>
-                    <button
-                        disabled={isPending}
-                        type="submit"
-                        className="w-full bg-[#f70672] cursor-pointer hover:bg-[#c7055d] font-semibold py-2 rounded-lg transition-colors duration-300"
-                    >
-                        {
-                            isPending ? <span>Loading....</span> : "Submit"
-                        }
-
-                    </button>
+                    <Submit />
                     {/* <p className={`text-center  rounded-lg font-semibold ${state?.success ? 'bg-green-700 text-white py-2' : 'bg-red-700 text-white py-2'}`}>{state?.message}</p> */}
                     {
                         state && (
@@ -80,3 +72,23 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+const Submit = () => {
+    const { pending, data, method, action } = useFormStatus()
+    console.log("DATA > ", data);
+    console.log("METHOD > ", method);
+    console.log("ACTION > ", action);
+
+    return (
+        <button
+            disabled={pending}
+            type="submit"
+            className="w-full bg-[#f70672] cursor-pointer hover:bg-[#c7055d] font-semibold py-2 rounded-lg transition-colors duration-300"
+        >
+            {
+                pending ? <span>Loading....</span> : "Submit"
+            }
+
+        </button>
+    )
+}
