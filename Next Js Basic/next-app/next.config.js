@@ -1,6 +1,13 @@
-// next.config.js
-module.exports = {
-  images: {
-    domains: ["images.unsplash.com"], // add this
-  },
-};
+/** @type {import('next').NextConfig} */
+
+const nextConfig = {
+  images : {
+    remotePatterns:[
+      {
+        hostname : "images.pexels.com"
+      },
+    ],
+  },  
+}
+
+export default nextConfig
